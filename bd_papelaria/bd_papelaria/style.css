@@ -1,0 +1,145 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ecf0f1;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menu lateral fixo */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: #2C3E50;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+    overflow-y: auto;
+}
+
+.menu-lateral h2 {
+    margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.menu-lateral a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.menu-lateral a:hover {
+    color: #1ABC9C;
+    text-decoration: underline;
+}
+
+/* Conteúdo principal, respeitando o menu lateral */
+.main-content {
+    margin-left: 250px; /* espaço para o menu lateral */
+    padding: 30px;
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Espaçamento entre elementos diretos no main-content */
+.main-content > * {
+    margin-bottom: 20px;
+}
+
+/* Formulários com campos empilhados */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label acima do input */
+form label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* Inputs e selects com tamanho total e espaçamento */
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Botões estilo padrão */
+form input[type="submit"], form button {
+    background-color: #2C3E50;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+form input[type="submit"]:hover, form button:hover {
+    background-color: #1A252F;
+}
+
+/* Tabela responsiva e estilizada */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+table thead {
+    background-color: #2C3E50;
+    color: white;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Mensagens de sucesso/erro */
+p {
+    font-size: 16px;
+    color: #333;
+    padding: 12px;
+    background-color: #e2f0d9;
+    border: 1px solid #a9d18e;
+    border-radius: 6px;
+}
+
+/* Links */
+a {
+    color: #2C3E50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
