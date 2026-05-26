@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Tráfego de Tolerância a Falhas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .btn-atualizar {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn-atualizar:hover {
+            background-color: #2980b9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #eeeeee;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 1px solid #eeee;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .badge {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .badge-danger { background-color: #e74c3c; color: white; }
+        .badge-success { background-color: #2ecc71; color: white; }
+        .badge-warning { background-color: #f1c40f; color: #333; }
+        .badge-info { background-color: #9b59b6; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚦 Painel de Controle de Tráfego Inteligente</h1>
+        <p style="text-align: center;">Simulação em tempo real dos sensores das vias</p>
+        
+        <a href="/" class="btn-atualizar">Simular Nova Leitura</a>
+
+        <table>
+            <thead>
+    <tr>
+        <th>N°</th>
+        <th>Qtd Carros</th>
+        <th>Tempo Espera</th>
+        <th>Ambulância?</th>
+        <th>Status Via</th>
+        <th>Tempo Sinal Verde</th>
+        
+    </tr>
+</thead>
+         
+           
+            <tbody>
+                {% for d in dados %}
+                <tr>
+                    <td><strong>{{ loop.index }}</strong></td>
+                    <td>{{ d.carros }} carros</td>
+                    <td>{{ d.tempo_espera }}s</td>
+                    <td>
+                        {% if d.ambulancia %}
+                            <span class="badge badge-danger">🚑 Emergência</span>
+                        {% else %}
+                            <span class="badge">Não</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if d.congestionado %}
+                            <span class="badge badge-warning">⚠️ Congestionado</span>
+                        {% else %}
+                            <span class="badge badge-success">✅ Fluxo Livre</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="badge badge-info">{{ d.tempo_verde }} segundos</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
